@@ -1,0 +1,132 @@
+/*----------------------------------------------------------------------
+  Demo CSS for Marcotte Grid System
+  Learn more ~
+
+  Licensed under GPL and MIT.
+----------------------------------------------------------------------*/
+
+@import "marcotte_grid";
+
+@mixin clearfix {
+  zoom: 1;
+  &:after, &:before {
+     content: "\0020";
+     display: block;
+     height: 0;
+     overflow: hidden;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+body {
+  background: #fff;
+  color: #333;
+  font-size: 11px;
+  height: auto;
+  padding-bottom: 20px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  padding-top: 20px;
+  text-align: center;
+}
+
+h2 {
+  padding-top: 20px;
+  text-align: center;
+}
+
+p {
+  border: 1px solid #666;
+  text-align: center;
+}
+
+.example {
+  @include clearfix;
+  div {
+    float: left;
+    p {
+      background:  hsla(300, 94%, 50%, 1);
+      color: #fff;
+    }
+  }
+}
+
+/* `Container
+----------------------------------------------------------------------------------------------------*/
+
+//grid(size,prefix,suffix,push,pull,firstcol,lastcol)
+
+#main {
+ @include grid_container;
+
+  div#example1 {
+    div.twothird {
+      @include grid(16,0,0,0,0,true,false);
+    }
+    div.onethird {
+      @include grid(8,0,0,0,0,false,true);
+    }
+  }
+
+  div#example2 {
+    div.content {
+      @include grid(18,0,0,0,0,true,false);
+    }
+    div.sidebar {
+      @include grid(6,0,0,0,0,false,true);
+    }
+  }
+
+  div#example3 {
+    div.column {
+      @include grid(6,0,0,0,0,false,false);
+      &:first-child {
+        @include grid(6,0,0,0,0,true,false);
+      }
+      &:last-child {
+        @include grid(6,0,0,0,0,false,true);
+      }
+    }
+  }
+
+  div#example4 {
+    div.column {
+      @include grid(8,0,0,0,0,false,false);
+      &:first-child {
+        @include grid(8,0,0,0,0,true,false);
+      }
+      &:last-child {
+        @include grid(8,0,0,0,0,false,true);
+      }
+    }
+  }
+
+  div#example5 {
+    div.column {
+      @include grid(12,0,0,0,0,false,false);
+      &:first-child {
+        @include grid(12,0,0,0,0,true,false);
+      }
+      &:last-child {
+        @include grid(12,0,0,0,0,false,true);
+      }
+    }
+  }
+
+
+}
+
